@@ -1,18 +1,18 @@
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
+for file in ~/dotfiles/.{path,bash_prompt,exports,aliases,functions,extra}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
 if [ -f /usr/local/etc/bash_completion.d/hg-completion.bash ]; then
   . /usr/local/etc/bash_completion.d/hg-completion.bash
 fi
+
 # NVM
-export NVM_DIR="/Users/jonathan/.nvm"
+export NVM_DIR="/Users/tom/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-# Aliases for launching:
-alias subl="open -a 'Sublime Text' $1"
+
 # git radar
 # export PS1="$PS1\$(git-radar --bash --fetch)"
 export CLICOLOR=1
@@ -195,6 +195,7 @@ _python_django_completion()
         fi
     fi
 }
+
 # Support for multiple interpreters.
 unset pythons
 if command -v whereis &>/dev/null; then
@@ -209,11 +210,10 @@ else
 fi
 complete -F _python_django_completion -o default $pythons
 unset pythons
+
 # make ctrl+w/cmd+w stop on slashes etc.
 stty werase undef
 bind '\C-w:unix-filename-rubout'
-
-
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
@@ -226,10 +226,9 @@ export LC_CTYPE=en_US.UTF-8
 # uninstall by removing these lines or running `tabtab uninstall yarn`
 [ -f /Users/jonathan/.yarn-cache/.global/node_modules/tabtab/.completions/yarn.bash ] && . /Users/jonathan/.yarn-cache/.global/node_modules/tabtab/.completions/yarn.bash
 
-
+# Setup editors
 nvim=$(which nvim)
 EDITOR=$nvim
 GIT_EDITOR=$nvim
 alias vim=$nvim
 
-alias mix='source ../venv/bin/activate && python manage.py runserver localhost:8001 --settings=mixcloud.settings.jon'
