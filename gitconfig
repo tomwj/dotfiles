@@ -1,31 +1,30 @@
 [alias]
-    # one-line log
-    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+# one-line log
+l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
 
-    a = add
-    ap = add -p
-    ac = !git add -A && git commit -m
-    c = commit --verbose
-    ca = commit -a --verbose
-    cm = commit -m
-    cam = commit -a -m
-    m = commit --amend --verbose
-    
-    d = diff
-    ds = diff --stat
-    dc = diff --cached
+a = add
+ap = add -p
+ac = !git add -A && git commit -m
+c = commit --verbose
+ca = commit -a --verbose
+cm = commit -m
+cam = commit -a -m
+m = commit --amend --verbose
 
-    s = status -s
-    co = checkout
-    cob = checkout -b
-    # list branches sorted by last modified
-    b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+d = diff
+ds = diff --stat
+dc = diff --cached
 
-    # list aliases
-    la = "!git config -l | grep alias | cut -c 7-"
-# This is Git's per-user configuration file.
+s = status -s
+co = checkout
+cob = checkout -b
+# list branches sorted by last modified
+b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+
+# list aliases
+la = "!git config -l | grep alias | cut -c 7-"
+
 [user]
-# Please adapt and uncomment the following lines:
 name = Tom Jennings
 email = tomwjennings@gmail.com
 

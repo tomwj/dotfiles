@@ -1,6 +1,8 @@
 # Load the shell dotfiles, and then some:
-# * ~/.path can be used to extend `$PATH`.
-# * ~/.extra can be used for other settings you don’t want to commit.
+
+# List of brew packages to install:
+# $ brew leaves
+# git hub lynx mtr neovim/neovim/neovim node pyenv-virtualenv python thefuck tmux
 for file in ~/dotfiles/{path,bash_prompt,bash_profile,exports,aliases,functions,extra,secrets}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
@@ -9,7 +11,9 @@ if [ -f /usr/local/etc/bash_completion.d/hg-completion.bash ]; then
   . /usr/local/etc/bash_completion.d/hg-completion.bash
 fi
 
-eval "$(thefuck --alias)"
+# Quick completion for _did you mean_ command responses. Yes ovbiously I fucking did, moron.
+alias fuck-it='THEFUCK_REQUIRE_CONFIRMATION=False fuck'
+
 
 # NVM
 export NVM_DIR="/Users/tom/.nvm"
@@ -283,3 +287,5 @@ alias vim=$nvim
 # https://superuser.com/questions/827984/open-files-limit-does-not-work-as-before-in-osx-yosemite/828010#828010
 ulimit -n 1000000 unlimited
 
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
