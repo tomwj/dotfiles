@@ -12,16 +12,22 @@ if [ -f /usr/local/etc/bash_completion.d/hg-completion.bash ]; then
 fi
 
 # Quick completion for _did you mean_ command responses. Yes ovbiously I fucking did, moron.
+eval $(thefuck --alias)
 alias fuck-it='THEFUCK_REQUIRE_CONFIRMATION=False fuck'
+alias fuckit=fuck-it
 
-
-# NVM
-export NVM_DIR="/Users/tom/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-# git completions
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion                                                                                                                                                                
-fi
+# Share history across shells
+# Avoid duplicates
+export HISTCONTROL=ignoreboth:erasedups
+export HISTIGNORE='ls:bg:fg:history'
+export HISTSIZE=2000000
+export HISTFILESIZE=$HISTSIZE
+# When the shell exits, append to the history file instead of overwriting it
+shopt -s histappend
+# After each command, append to the history file and reread it
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+# Print time with history
+export HISTTIMEFORMAT="%y-%m-%d %T "
 
 
 function_exists() {
@@ -99,9 +105,7 @@ _complete_ssh_hosts ()
         return 0
 }
 complete -F _complete_ssh_hosts ssh
-export PATH="$HOME/.cargo/bin:$PATH"
 export ANDROID_HOME=~/Library/Android/sdk
-export HISTSIZE=5000
 alias inoket='source ../sourceMe.sh && source venv/bin/activate && python application.py runserver'
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 ###-begin-npm-completion-###
@@ -179,13 +183,6 @@ _complete_gh ()
         return 0
 }
 complete -F _complete_gh gh
-# Share history across shells
-# Avoid duplicates
-HISTCONTROL=ignoredups:erasedups
-# When the shell exits, append to the history file instead of overwriting it
-shopt -s histappend
-# After each command, append to the history file and reread it
-# PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 PYTHONDONTWRITEBYTECODE=1
 # Django bash completion
 _django_completion()
@@ -241,18 +238,19 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-export HISTSIZE=20000
 export LC_CTYPE=en_US.UTF-8
 
-# tabtab source for yarn package
-# uninstall by removing these lines or running `tabtab uninstall yarn`
-[ -f /Users/jonathan/.yarn-cache/.global/node_modules/tabtab/.completions/yarn.bash ] && . /Users/jonathan/.yarn-cache/.global/node_modules/tabtab/.completions/yarn.bash
+## arrow up
+bind '"<Up>":history-search-backward'
+
+## arrow down
+bind '"<Down>":history-search-forward'
 
 # Setup editors
-nvim=$(which nvim)
-EDITOR=$nvim
-GIT_EDITOR=$nvim
-alias vim=$nvim
+export NVIM=$(which nvim)
+export EDITOR=$NVIM
+export GIT_EDITOR=$NVIM
+alias vim=$NVIM
 
 # Increase limit of maximum open files
 # changes that need to be applied to kernel
@@ -285,7 +283,9 @@ alias vim=$nvim
 # Check changes were applied
 # $ launchctl limit maxfiles
 # https://superuser.com/questions/827984/open-files-limit-does-not-work-as-before-in-osx-yosemite/828010#828010
-ulimit -n 1000000 unlimited
-
+# Fuzzy search
+# https://github.com/junegunn/fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+apb='[ ! -z "$ANSIBLE_BECOME_PASS" ] && ansible-playbook -e "ansible_become_pass=$ANSIBLE_BECOME_PASS"'

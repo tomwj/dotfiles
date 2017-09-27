@@ -10,7 +10,9 @@ Plug 'vim-syntastic/syntastic'
 " Ack Search in vim
 Plug 'mileszs/ack.vim'
 " Insert and delete brackets etc in pairs
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
+" Autoindent Groovy
+Plug 'vim-scripts/groovyindent-unix'
 " Fuzzy finder files, buffers, tags :CtrlP
 Plug 'ctrlpvim/ctrlp.vim'
 " Mean, lean, status line
@@ -24,15 +26,36 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'Yggdroot/indentLine'
 " Handy git integrations
 Plug 'tpope/vim-fugitive'
-" nerdtree
-" python-syntax
-" stackanswers.vim
-" vim-colors-solarized
-" vim-commentary
-" vim-gitgutter
-" vim-javascript-syntax
-" javascript-libraries-syntax
-
+" Enables commenting blocks of code gcc gc
+Plug 'tpope/vim-commentary'
+" Adds lots of shortcuts like ]q [q for cnext and cprevious
+Plug 'tpope/vim-unimpaired'
+" Surround terms with '"etc 
+Plug 'tpope/vim-surround'
+" Surround terms with '"etc 
+Plug 'tpope/vim-repeat'
+" Shows little plus minus in gutter for git
+Plug 'airblade/vim-gitgutter'
+" stackanswers
+Plug 'james9909/stackanswers.vim'
+" NERDTree, side bar file tree
+Plug 'scrooloose/nerdtree'
+" Grrr AWS completions
+Plug 'm-kat/aws-vim'
+"" Code snippet completion
+"Plug 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+" Super Tab tab all the things
+Plug 'ervandew/supertab'
+" Cheatsheat for vim in vim
+Plug 'lifepillar/vim-cheat40'
+" ansible highlighting
+Plug 'pearofducks/ansible-vim'
+" Wrapper for cscope
+Plug 'mfulz/cscope.nvim'
+" Enable fzf in vim
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Initialize plugin system
 call plug#end()
 
@@ -45,10 +68,22 @@ let g:ctrlp_switch_buffer = 'et'
 let g:ctrlp_max_files=50000
 " ignore .gitignored files
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" ULTISNIPS
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+let g:ansible_unindent_after_newline = 1
 
 " COLOURSCHEME
 " ============
 set t_Co=256
+set number
 " in case t_Co alone doesn't work, add this as well:
 let &t_AB="\e[48;5;%dm"
 let &t_AF="\e[38;5;%dm"
@@ -59,6 +94,8 @@ colorscheme kalisi
 " or 
 set background=dark
 " if you don't set the background, the light theme will be used
+let g:AWSVimValidate = 1 
+
 
 " SYNTASTIC
 set statusline+=%#warningmsg#
@@ -72,8 +109,9 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_check_on_w = 1
 let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_yaml_checker_args = ["-d '{\"extends\": \"default\", \"rules\": {\"line-length\": {\"level\": \"warning\"}}}'"]
 let g:syntastic_yaml_checkers = ['yamllint']
-let g:syntastic_yaml_checker_args = '{"extends": "default", "rules": {"line-length": {"level": "warning"}}}'
+let g:syntastic_yaml_yamllint_exe = 'yamllint -d "{\"extends\": \"default\", \"rules\": {\"line-length\": {\"level\": \"warning\"}}}"'
 let g:syntastic_javascript_eslint_exe = 'node_modules/.bin/eslint --config=.eslintrc.js --max-warnings=0'
 let g:syntastic_python_checkers = ['pylint']
 highlight link SyntasticErrorSign SignColumn
@@ -81,4 +119,27 @@ highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
 
+" Path to store the cscope files (cscope.files and cscope.out)
+" Defaults to '~/.cscope'
+let g:cscope_dir = '~/.nvim-cscope'
 
+" Map the default keys on startup
+" These keys are prefixed by CTRL+\ <cscope param>
+" A.e.: CTRL+\ d for goto definition of word under cursor
+" Defaults to off
+let g:cscope_map_keys = 1
+
+" Update the cscope files on startup of cscope.
+" Defaults to off
+let g:cscope_update_on_start = 1
+
+" Tabs GTFO
+set autoindent
+set expandtab
+set softtabstop=2
+set shiftwidth=2
+
+augroup XML
+    autocmd!
+    autocmd FileType xml setlocal foldmethod=indent foldlevelstart=999 foldminlines=0
+augroup END

@@ -1,4 +1,4 @@
-Host *.github.com
+Host github.com
   AddKeysToAgent yes
   UseKeychain yes
   IdentityFile ~/.ssh/git-github
@@ -11,3 +11,10 @@ Host *.bitbucket.org*
 Host git-codecommit.*.amazonaws.com
   User APKAICXDVO2E2CB46GVA
   IdentityFile ~/.ssh/git-codecommit-product
+
+Host coderepo.dev2.cloud.local*
+    KexAlgorithms +diffie-hellman-group1-sha1
+    ProxyCommand /usr/local/bin/corkscrew 10.224.23.8 3128 %h %p
+    User ThomasJ.dv2
+    IdentityFile ~/.ssh/hmcts_Gerrit_Repo
+
