@@ -12,3 +12,7 @@ alias difflast="git log | grep -e commit | head -10 | sed -n '2p' | sed 's/commi
 # ansible
 alias ash=ansible-ssh
 apb='[ ! -z "$ANSIBLE_BECOME_PASS" ] && ansible-playbook -e "ansible_become_pass=$ANSIBLE_BECOME_PASS"'
+
+# exports
+export JAVA_HOME=$(/usr/libexec/java_home)
+
