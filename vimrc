@@ -56,21 +56,20 @@ let g:syntastic_python_checkers = ['pylint']
 " highlight link SyntasticStyleWarningSign SignColumn
 
 
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 " PLUGIN LIST:
-" ack.vim
-" auto-pairs
-" ctrlp
-" nerdtree
-" python-syntax
-" stackanswers.vim
-" syntastic
-" vim-airline
-" vim-colors-solarized
-" vim-commentary
-" vim-fugitive
-" vim-gitgutter
-" vim-javascript-syntax
-" javascript-libraries-syntax
+Plug ack.vim
+Plug auto-pairs
+Plug ctrlp
+Plug nerdtree
+Plug python-syntax
+Plug stackanswers.vim
+Plug syntastic
+Plug vim-airline
+Plug vim-colors-solarized
 
 let g:used_javascript_libs = 'react'
 let g:python_host_prog = '/usr/local/bin/python2'
