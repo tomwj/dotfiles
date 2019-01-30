@@ -2,3 +2,5 @@
 *.cert
 *.key
 secrets.bash
+# Secrets can end up in here. . . guess how I know
+nvim/backups
