@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/tom/src/github.com/pi-top/OS-image-gen/pi-topOS/stage6'
+let g:netrw_dirhist_2='/home/tom/src/github.com/pi-top/OS-image-gen/pi-topOS/stage6/02-sys-tweaks/00-patches'
+let g:netrw_dirhist_3='/home/tom/src/github.com/pi-top/devops/jenkins/folders/os-builds'
+let g:netrw_dirhist_4='/home/tom/src/github.com/pi-top/OS-image-gen/stage5'
+let g:netrw_dirhist_5='/home/tom/src/github.com/pi-top/OS-image-gen/stage5/00-extract-rootfs'
+let g:netrw_dirhist_6='/home/tom/src/github.com/pi-top/OS-image-gen/stage5'
+let g:netrw_dirhist_7='/home/tom/src/github.com/pi-top/devops/ansible/galaxy_roles'
