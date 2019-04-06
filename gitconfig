@@ -29,3 +29,5 @@ name = Tom Jennings
 email = tomwjennings@gmail.com
 
 
+[push]
+	default = current
