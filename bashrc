@@ -51,4 +51,5 @@ source ~/src/github.com/jdxcode/gh/completions/gh.bash
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/t/.sdkman"
 [[ -s "/home/t/.sdkman/bin/sdkman-init.sh" ]] && source "/home/t/.sdkman/bin/sdkman-init.sh"
+export PATH=$PATH:/home/t/dotfiles/bin:/home/t/bin
 export PATH=$PATH:~/.jx/bin
