@@ -159,3 +159,4 @@ set undodir=~/.config/nvim/backups
 set undofile
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
+
