@@ -7,7 +7,7 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=1
-User=centos
+User=t
 ExecStart=/usr/bin/rescuetime
 
 [Install]
