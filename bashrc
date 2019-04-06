@@ -42,7 +42,13 @@ alias vim=/usr/bin/nvim
 alias vi=vim
 
 export PATH=$PATH:~/dotfiles/bin
+export PATH=$PATH:~/bin
 source ~/src/github.com/jdxcode/gh/bash/gh.bash
 source ~/src/github.com/jdxcode/gh/completions/gh.bash
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/t/.sdkman"
+[[ -s "/home/t/.sdkman/bin/sdkman-init.sh" ]] && source "/home/t/.sdkman/bin/sdkman-init.sh"
+export PATH=$PATH:~/.jx/bin

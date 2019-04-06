@@ -37,3 +37,8 @@ man() {
     LESS_TERMCAP_us=$'\e[01;32m' \
     command man "$@"
 }
+
+# Default terminal to use X11 so rescuetime works
+export GDK_BACKEND=x11
+
+export GOPATH=/home/t/

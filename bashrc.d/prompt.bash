@@ -120,3 +120,6 @@ export PS1;
 
 PS2="\[${yellow}\]→ \[${reset}\]";
 export PS2;
+
+# Awe yisss, bash parameter expansion
+export title=$PS1
