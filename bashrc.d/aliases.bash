@@ -42,3 +42,4 @@ man() {
 export GDK_BACKEND=x11
 
 export GOPATH=/home/t/
+export JAVA_HOME=$(/usr/libexec/java_home)
