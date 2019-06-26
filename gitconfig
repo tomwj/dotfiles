@@ -25,9 +25,10 @@ b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectna
 la = "!git config -l | grep alias | cut -c 7-"
 
 [user]
-name = Tom Jennings
-email = tomwjennings@gmail.com
-
+  name = Tom Jennings
+  email = tom@pi-top.com
 
 [push]
 	default = current
+[commit]
+	gpgsign = true

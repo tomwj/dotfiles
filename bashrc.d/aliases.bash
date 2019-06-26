@@ -14,7 +14,7 @@ alias ash=ansible-ssh
 apb='[ ! -z "$ANSIBLE_BECOME_PASS" ] && ansible-playbook -e "ansible_become_pass=$ANSIBLE_BECOME_PASS"'
 
 # exports
-#export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk/
 
 # Make commands colourful
 alias ls='ls --color=auto'

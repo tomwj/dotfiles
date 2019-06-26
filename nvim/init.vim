@@ -63,6 +63,8 @@ Plug 'mfulz/cscope.nvim'
 " Install terraform for vim
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
+" Align Github flavoured markdown tables
+Plug 'junegunn/vim-easy-align'
 " Initialize plugin system
 call plug#end()
 
@@ -160,3 +162,8 @@ set undofile
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 
+" Align GitHub-flavored Markdown tables
+au FileType markdown vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
+
+" Don't hide quotes in json, or formatting in markdown
+set conceallevel=0
