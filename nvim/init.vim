@@ -8,6 +8,10 @@ filetype plugin indent on
 " =======
 " Specify a directory for plugins (for Neovim: )
 call plug#begin('~/.local/share/nvim/plugged')
+" Allows diffing of lines in file. 
+Plug 'AndrewRadev/linediff.vim'
+" Easy way to add formatters
+Plug 'sbdchd/neoformat'
 Plug 'junegunn/vim-easy-align'
 " Syntax highlight and much goodness
 Plug 'vim-syntastic/syntastic'
@@ -59,13 +63,16 @@ Plug 'pearofducks/ansible-vim'
 " Wrapper for cscope
 Plug 'mfulz/cscope.nvim'
 " Enable fzf in vim
- Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Install terraform for vim
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
 " Align Github flavoured markdown tables
 Plug 'junegunn/vim-easy-align'
-" Initialize plugin system
+" Javascript autocomplete
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
+" Linting
+"Plug 'neomake/neomake', { 'on': 'Neomake' }
 call plug#end()
 
 " Map ctrl n to open filetree
@@ -77,16 +84,6 @@ let g:ctrlp_switch_buffer = 'et'
 let g:ctrlp_max_files=50000
 " ignore .gitignored files
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-" ULTISNIPS
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
 let g:ansible_unindent_after_newline = 1
 
 " COLOURSCHEME
@@ -167,3 +164,10 @@ au FileType markdown vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
 
 " Don't hide quotes in json, or formatting in markdown
 set conceallevel=0
+
+function! TestCommitRevert()
+  w
+  silent !./TCR.sh
+endfunction
+
+command! W TestCommitRevert

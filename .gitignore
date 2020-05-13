@@ -1,7 +1,7 @@
 *.pem
 *.cert
 *.key
-secrets.bash
+secrets.bashrc
 # Secrets can end up in here. . . guess how I know
 nvim/backups
 nvim/swap

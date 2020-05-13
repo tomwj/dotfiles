@@ -16,6 +16,8 @@ ds = diff --stat
 dc = diff --cached
 
 s = status -s
+st = status
+
 co = checkout
 cob = checkout -b
 # list branches sorted by last modified
@@ -26,9 +28,13 @@ la = "!git config -l | grep alias | cut -c 7-"
 
 [user]
   name = Tom Jennings
-  email = tom@pi-top.com
+  email = tom.jennings@filtered.com
 
 [push]
 	default = current
 [commit]
-	gpgsign = true
+	gpgsign = false
+[core]
+	editor = nvim
+[branch]
+	autosetuprebase = always
