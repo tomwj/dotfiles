@@ -17,8 +17,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'vim-syntastic/syntastic'
 " Ack Search in vim
 Plug 'mileszs/ack.vim'
-" Insert and delete brackets etc in pairs
-Plug 'jiangmiao/auto-pairs'
 " Autoindent Groovy
 Plug 'vim-scripts/groovyindent-unix'
 " Fuzzy finder files, buffers, tags :CtrlP
